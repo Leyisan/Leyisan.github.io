@@ -9,14 +9,14 @@
   <title>操作系统开机过程 | Ley&#39;s party</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="看到一篇BLOG问了个很有意思的问题，为什么开机叫BOOT？这个问题让我想起了小时候学着修电脑的时候，电脑蓝屏屏幕显示的boot那几个字，我试着查字典去理解我的电脑正在发生什么灾难。一查结果发现，boot是意思是鞋子。当时我就懵逼了，你出问题就出问题吧，鞋子是个什么鬼意思。 后来才发现，开机和鞋子是同一个词……emmm这是什么操作？仔细想想看，为啥开机会和鞋子同一个词呢？很迷，这里面难道有什么惊天">
-<meta name="keywords" content="操作系统,BIOS,硬件,随笔">
+<meta name="keywords" content="操作系统,BIOS,硬件,随笔,在校">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统开机过程">
 <meta property="og:url" content="http://yoursite.com/2018/05/03/操作系统开机过程/index.html">
 <meta property="og:site_name" content="Ley&#39;s party">
 <meta property="og:description" content="看到一篇BLOG问了个很有意思的问题，为什么开机叫BOOT？这个问题让我想起了小时候学着修电脑的时候，电脑蓝屏屏幕显示的boot那几个字，我试着查字典去理解我的电脑正在发生什么灾难。一查结果发现，boot是意思是鞋子。当时我就懵逼了，你出问题就出问题吧，鞋子是个什么鬼意思。 后来才发现，开机和鞋子是同一个词……emmm这是什么操作？仔细想想看，为啥开机会和鞋子同一个词呢？很迷，这里面难道有什么惊天">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-15T16:11:46.580Z">
+<meta property="og:updated_time" content="2018-07-15T16:17:49.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统开机过程">
 <meta name="twitter:description" content="看到一篇BLOG问了个很有意思的问题，为什么开机叫BOOT？这个问题让我想起了小时候学着修电脑的时候，电脑蓝屏屏幕显示的boot那几个字，我试着查字典去理解我的电脑正在发生什么灾难。一查结果发现，boot是意思是鞋子。当时我就懵逼了，你出问题就出问题吧，鞋子是个什么鬼意思。 后来才发现，开机和鞋子是同一个词……emmm这是什么操作？仔细想想看，为啥开机会和鞋子同一个词呢？很迷，这里面难道有什么惊天">
@@ -61,6 +61,8 @@
 			<ul>
 			
 				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/在校/">实验</a></li>
 	        
 				<li><a href="/tags/随笔/">随笔</a></li>
 	        
@@ -110,6 +112,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -123,12 +127,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/在校/">实验</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/随笔/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -206,6 +212,10 @@
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">在校</a>
         		</li>
       		
 		</ul>
@@ -300,6 +310,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-按下电源"><span class="toc-number">1.</span> <span class="toc-text">1.按下电源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-读取BIOS"><span class="toc-number">2.</span> <span class="toc-text">2.读取BIOS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-装载操作系统"><span class="toc-number">3.</span> <span class="toc-text">3.装载操作系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-启动操作系统"><span class="toc-number">4.</span> <span class="toc-text">4.启动操作系统</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -465,6 +488,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">在校</a>
               </li>
             
             <div class="clearfix"></div>

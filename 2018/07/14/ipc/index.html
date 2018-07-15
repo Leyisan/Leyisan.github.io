@@ -9,7 +9,7 @@
   <title>进程间通信(Inter-Process Communication) | Ley&#39;s party</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="三种典型方式介绍及实现————管道、消息、共享内存">
-<meta name="keywords" content="管道,信号,共享内存,进程通信">
+<meta name="keywords" content="管道,信号,共享内存,进程通信,在校">
 <meta property="og:type" content="article">
 <meta property="og:title" content="进程间通信(Inter-Process Communication)">
 <meta property="og:url" content="http://yoursite.com/2018/07/14/ipc/index.html">
@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://wx3.sinaimg.cn/mw690/7032dfcbgy1ft9ozcz63aj20ju0atgm8.jpg">
 <meta property="og:image" content="http://wx1.sinaimg.cn/mw690/7032dfcbgy1ft9ngg2dkbj21e11e3nbu.jpg">
 <meta property="og:image" content="http://wx4.sinaimg.cn/mw690/7032dfcbgy1ft9ngf72a2j20ms0gw770.jpg">
-<meta property="og:updated_time" content="2018-07-15T15:48:30.809Z">
+<meta property="og:updated_time" content="2018-07-15T16:18:01.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进程间通信(Inter-Process Communication)">
 <meta name="twitter:description" content="三种典型方式介绍及实现————管道、消息、共享内存">
@@ -67,6 +67,8 @@
 			<ul>
 			
 				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/在校/">实验</a></li>
 	        
 				<li><a href="/tags/随笔/">随笔</a></li>
 	        
@@ -116,6 +118,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -129,12 +133,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/在校/">实验</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/随笔/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -394,6 +400,10 @@ int main()
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">进程通信</a>
         		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">在校</a>
+        		</li>
       		
 		</ul>
 	</div>
@@ -483,6 +493,19 @@ int main()
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#序言"><span class="toc-number">1.</span> <span class="toc-text">序言</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#管道"><span class="toc-number"></span> <span class="toc-text">管道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pipe-c"><span class="toc-number"></span> <span class="toc-text">pipe.c</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#signal-c"><span class="toc-number"></span> <span class="toc-text">signal.c</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shrm-c"><span class="toc-number"></span> <span class="toc-text">shrm.c</span></a>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -648,6 +671,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">在校</a>
               </li>
             
             <div class="clearfix"></div>
