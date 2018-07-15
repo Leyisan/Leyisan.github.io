@@ -9,7 +9,7 @@
   <title>进程间通信(Inter-Process Communication) | Ley&#39;s party</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="三种典型方式介绍及实现————管道、消息、共享内存">
-<meta name="keywords" content="华南师范计算机">
+<meta name="keywords" content="进程间通信（IPC）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="进程间通信(Inter-Process Communication)">
 <meta property="og:url" content="http://yoursite.com/2018/07/14/ipc/index.html">
@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://wx3.sinaimg.cn/mw690/7032dfcbgy1ft9ozcz63aj20ju0atgm8.jpg">
 <meta property="og:image" content="http://wx1.sinaimg.cn/mw690/7032dfcbgy1ft9ngg2dkbj21e11e3nbu.jpg">
 <meta property="og:image" content="http://wx4.sinaimg.cn/mw690/7032dfcbgy1ft9ngf72a2j20ms0gw770.jpg">
-<meta property="og:updated_time" content="2018-07-15T15:21:01.455Z">
+<meta property="og:updated_time" content="2018-07-15T15:29:27.173Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进程间通信(Inter-Process Communication)">
 <meta name="twitter:description" content="三种典型方式介绍及实现————管道、消息、共享内存">
@@ -375,6 +375,17 @@ int main()
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">进程间通信（IPC）</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -462,6 +473,22 @@ int main()
 
   
 
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
   
 
   
@@ -560,6 +587,10 @@ MathJax.Hub.Queue(function() {
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">进程间通信（IPC）</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
