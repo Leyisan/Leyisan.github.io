@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Ley&#39;s party</title>
+  <title>Tag: 进程间通信（IPC） | Ley&#39;s party</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="华南师范计算机">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ley&#39;s party">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/进程间通信（IPC）/index.html">
 <meta property="og:site_name" content="Ley&#39;s party">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
@@ -141,42 +141,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-ipc" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/07/14/ipc/" class="archive-article-date">
+  	<time datetime="2018-07-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-14</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/14/ipc/">进程间通信(Inter-Process Communication)</a>
+      <a class="archive-article-title" href="/2018/07/14/ipc/">进程间通信(Inter-Process Communication)</a>
     </h1>
   
 
-        
-        <a href="/2018/07/14/ipc/" class="archive-article-date">
-  	<time datetime="2018-07-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h4><p><strong>进程间通信，顾名思义，是指进程间的数据交换。</strong><br>每个进程在创建时，系统都分别给进程分配了各自的内存空间。对于每个进程而言，访问自己空间内的数据是很简单的，就像你在代码段中定义了一个int型变量，那你要访问它的时候就只需要给出这个变量在这一进程的分配空间中的偏移地址即可（比如变量名隐含了地址转换）。但对于不同进程而言，对方的数据空间就是一片未知领域了。进程A想要从进程B中得到某一个数据，但是不能直接访问（有内存保护，会越界）。这就需要双方做出某种约定来协商一种互相存取对方数据的方法。<br>本文主要只涉及进程间通信的三种典型方式介绍及实现————<strong>管道、消息、共享内存</strong>  </p>
-<hr>
-<h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><p>管道，分为匿名管道（pipe）和有名管道（fifo）。<br> <img src="http://wx3.sinaimg.cn/mw690/7032dfcbgy1ft9ncrvoj1j206c059dfr.jpg" alt="avatar"><br><strong>匿名管道（pipe）</strong></p>
-<ul>
-<li>单工通信，信息只能从写端流向读端。</li>
-<li>只能用于有亲缘关系的进程，也就是父子进程之间通信。
-        
-          <a class="article-more-a" href="/2018/07/14/ipc/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -192,37 +184,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
+    </div></section>
+  
+
+    
 
 
           </div>
@@ -244,10 +218,10 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
+		isHome: false,
 		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
