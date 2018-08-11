@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 操作系统 | Ley&#39;s party</title>
+  <title>java容器-List | Ley&#39;s party</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="华南师范计算机">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ley&#39;s party">
-<meta property="og:url" content="http://yoursite.com/tags/操作系统/index.html">
+  <meta name="description" content="目录：  list中添加，获取，删除元素； list中是否包含某个元素； list中根据索引将元素数值改变(替换)； list中查看（判断）元素的索引； 根据元素索引位置进行的判断； 利用list中索引位置重新生成一个新的list（截取集合）； 对比两个list中的所有元素； 判断list是否为空； 返回Iterator集合对象； 将集合转换为字符串； 将集合转换为数组； 集合类型转换； 去重复；">
+<meta name="keywords" content="Java,List">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java容器-List">
+<meta property="og:url" content="http://yoursite.com/2018/07/15/java容器-List/index.html">
 <meta property="og:site_name" content="Ley&#39;s party">
+<meta property="og:description" content="目录：  list中添加，获取，删除元素； list中是否包含某个元素； list中根据索引将元素数值改变(替换)； list中查看（判断）元素的索引； 根据元素索引位置进行的判断； 利用list中索引位置重新生成一个新的list（截取集合）； 对比两个list中的所有元素； 判断list是否为空； 返回Iterator集合对象； 将集合转换为字符串； 将集合转换为数组； 集合类型转换； 去重复；">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-11T15:37:01.350Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ley&#39;s party">
+<meta name="twitter:title" content="java容器-List">
+<meta name="twitter:description" content="目录：  list中添加，获取，删除元素； list中是否包含某个元素； list中根据索引将元素数值改变(替换)； list中查看（判断）元素的索引； 根据元素索引位置进行的判断； 利用list中索引位置重新生成一个新的list（截取集合）； 对比两个list中的所有元素； 判断list是否为空； 返回Iterator集合对象； 将集合转换为字符串； 将集合转换为数组； 集合类型转换； 去重复；">
   
     <link rel="alternative" href="/atom.xml" title="Ley&#39;s party" type="application/atom+xml">
   
@@ -145,76 +149,357 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-java容器-List" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/03/操作系统开机过程/" class="archive-article-date">
-  	<time datetime="2018-05-03T14:45:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/03/操作系统开机过程/">操作系统开机过程</a>
+    <h1 class="article-title" itemprop="name">
+      java容器-List
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/07/15/java容器-List/" class="archive-article-date">
+  	<time datetime="2018-07-15T15:29:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>目录：</p>
+<ol>
+<li>list中添加，获取，删除元素；</li>
+<li>list中是否包含某个元素；</li>
+<li>list中根据索引将元素数值改变(替换)；</li>
+<li>list中查看（判断）元素的索引；</li>
+<li>根据元素索引位置进行的判断；</li>
+<li>利用list中索引位置重新生成一个新的list（截取集合）；</li>
+<li>对比两个list中的所有元素；</li>
+<li>判断list是否为空；</li>
+<li>返回Iterator集合对象；</li>
+<li>将集合转换为字符串；</li>
+<li>将集合转换为数组；</li>
+<li>集合类型转换；</li>
+<li>去重复；</li>
+</ol>
+<p>备注：内容中代码具有关联性。</p>
+<p>1.list中添加，获取，删除元素；<br>　　添加方法是：.add(e)；　　获取方法是：.get(index)；　　删除方法是：.remove(index)； 按照索引删除；　　.remove(Object o)； 按照元素内容删除；</p>
+<pre><code>List&lt;String&gt; person=new ArrayList&lt;&gt;();
+person.add(&quot;jackie&quot;);   //索引为0  //.add(e)
+person.add(&quot;peter&quot;);    //索引为1
+person.add(&quot;annie&quot;);    //索引为2
+person.add(&quot;martin&quot;);   //索引为3
+person.add(&quot;marry&quot;);    //索引为4
+
+person.remove(3);   //.remove(index)
+person.remove(&quot;marry&quot;);     //.remove(Object o)
+
+String per=&quot;&quot;;
+per=person.get(1);
+System.out.println(per);    ////.get(index)
+
+for (int i = 0; i &lt; person.size(); i++) {
+    System.out.println(person.get(i));  //.get(index)
+}
+</code></pre><p>2.list中是否包含某个元素；<br>　　方法：.contains（Object o）； 返回true或者false</p>
+<pre><code>List&lt;String&gt; fruits=new ArrayList&lt;&gt;();
+fruits.add(&quot;苹果&quot;);
+fruits.add(&quot;香蕉&quot;);
+fruits.add(&quot;桃子&quot;);
+//for循环遍历list
+for (int i = 0; i &lt; fruits.size(); i++) {
+    System.out.println(fruits.get(i));
+}
+String appleString=&quot;苹果&quot;;
+//true or false
+System.out.println(&quot;fruits中是否包含苹果：&quot;+fruits.contains(appleString));
+
+if (fruits.contains(appleString)) {
+    System.out.println(&quot;我喜欢吃苹果&quot;);
+}else {
+    System.out.println(&quot;我不开心&quot;);
+}
+</code></pre><p>3.list中根据索引将元素数值改变(替换)；<br>　　注意 .set(index, element); 和 .add(index, element); 的不同；</p>
+<pre><code>String a=&quot;白龙马&quot;, b=&quot;沙和尚&quot;, c=&quot;八戒&quot;, d=&quot;唐僧&quot;, e=&quot;悟空&quot;;
+List&lt;String&gt; people=new ArrayList&lt;&gt;();
+people.add(a);
+people.add(b);
+people.add(c);
+people.set(0, d);   //.set(index, element);     //将d唐僧放到list中索引为0的位置，替换a白龙马
+people.add(1, e);   //.add(index, element);     //将e悟空放到list中索引为1的位置,原来位置的b沙和尚后移一位
+
+//增强for循环遍历list
+for(String str:people){
+    System.out.println(str);
+}
+</code></pre><p>4.list中查看（判断）元素的索引；　　<br>　　注意：.indexOf（）； 和  lastIndexOf（）的不同；</p>
+<pre><code>List&lt;String&gt; names=new ArrayList&lt;&gt;();
+names.add(&quot;刘备&quot;);    //索引为0
+names.add(&quot;关羽&quot;);    //索引为1
+names.add(&quot;张飞&quot;);    //索引为2
+names.add(&quot;刘备&quot;);    //索引为3
+names.add(&quot;张飞&quot;);    //索引为4
+System.out.println(names.indexOf(&quot;刘备&quot;));
+System.out.println(names.lastIndexOf(&quot;刘备&quot;));
+System.out.println(names.indexOf(&quot;张飞&quot;));
+System.out.println(names.lastIndexOf(&quot;张飞&quot;));
+</code></pre><p>5.根据元素索引位置进行的判断;</p>
+<pre><code>if (names.indexOf(&quot;刘备&quot;)==0) {
+    System.out.println(&quot;刘备在这里&quot;);
+}else if (names.lastIndexOf(&quot;刘备&quot;)==3) {
+    System.out.println(&quot;刘备在那里&quot;);
+}else {
+    System.out.println(&quot;刘备到底在哪里？&quot;);
+}
+</code></pre><p>6.利用list中索引位置重新生成一个新的list（截取集合）；<br>　　方法： .subList(fromIndex, toIndex)；　　.size() ； 该方法得到list中的元素数的和</p>
+<pre><code>List&lt;String&gt; phone=new ArrayList&lt;&gt;();
+phone.add(&quot;三星&quot;);    //索引为0
+phone.add(&quot;苹果&quot;);    //索引为1
+phone.add(&quot;锤子&quot;);    //索引为2
+phone.add(&quot;华为&quot;);    //索引为3
+phone.add(&quot;小米&quot;);    //索引为4
+//原list进行遍历
+for(String pho:phone){
+    System.out.println(pho);
+}
+//生成新list
+phone=phone.subList(1, 4);  //.subList(fromIndex, toIndex)      
+//利用索引1-4的对象重新生成一个list，但是不包含索引为4的元素，4-1=3
+for (int i = 0; i &lt; phone.size(); i++) { // phone.size() 该方法得到list中的元素数的和
+    System.out.println(&quot;新的list包含的元素是&quot;+phone.get(i));
+        }
+</code></pre><p>7.对比两个list中的所有元素；<br>　　//两个相等对象的equals方法一定为true, 但两个hashcode相等的对象不一定是相等的对象</p>
+<pre><code>//1.
+if (person.equals(fruits)) {
+    System.out.println(&quot;两个list中的所有元素相同&quot;);
+}else {
+    System.out.println(&quot;两个list中的所有元素不一样&quot;);
+}
+//2.       
+if (person.hashCode()==fruits.hashCode()) {
+    System.out.println(&quot;我们相同&quot;);
+}else {
+    System.out.println(&quot;我们不一样&quot;);
+}
+</code></pre><p>8.判断list是否为空；<br>　　//空则返回true，非空则返回false</p>
+<pre><code>if (person.isEmpty()) {
+    System.out.println(&quot;空的&quot;);
+}else {
+    System.out.println(&quot;不是空的&quot;);
+}
+</code></pre><p>9.返回Iterator集合对象；</p>
+<pre><code>System.out.println(&quot;返回Iterator集合对象:&quot;+person.iterator());
+</code></pre><p>10.将集合转换为字符串；</p>
+<pre><code>String liString=&quot;&quot;;
+liString=person.toString();
+System.out.println(&quot;将集合转换为字符串:&quot;+liString);
+</code></pre><p>11.将集合转换为数组；</p>
+<pre><code>System.out.println(&quot;将集合转换为数组:&quot;+person.toArray());
+</code></pre><p>12.集合类型转换；</p>
+<pre><code>//1.默认类型
+List&lt;Object&gt; listsStrings=new ArrayList&lt;&gt;();
+　　for (int i = 0; i &lt; person.size(); i++) {
+    listsStrings.add(person.get(i));
+}
+//2.指定类型
+List&lt;StringBuffer&gt; lst=new ArrayList&lt;&gt;();
+　　for(String string:person){
+　　lst.add(StringBuffer(string));
+}
+</code></pre><p>13.去重复；</p>
+<pre><code>List&lt;String&gt; lst1=new ArrayList&lt;&gt;();
+        lst1.add(&quot;aa&quot;);
+        lst1.add(&quot;dd&quot;);
+        lst1.add(&quot;ss&quot;);
+        lst1.add(&quot;aa&quot;);
+        lst1.add(&quot;ss&quot;);
+
+        //方法 1.
+for (int i = 0; i &lt;lst1.size()-1; i++) {
+    for (int j = lst1.size()-1; j &gt;i; j--) {
+        if (lst1.get(j).equals(lst1.get(i))) {
+            lst1.remove(j);
+        }
+    }
+}
+System.out.println(lst1);
+
+        //方法 2.
+List&lt;String&gt; lst2=new ArrayList&lt;&gt;();
+for (String s:lst1) {
+    if (Collections.frequency(lst2, s)&lt;1) {
+        lst2.add(s);
+    }
+}
+System.out.println(lst2);
+</code></pre><p><strong>参考文献：</strong></p>
+<blockquote>
+<p><a href="https://www.cnblogs.com/epeter/p/5648026.html" target="_blank" rel="noopener">https://www.cnblogs.com/epeter/p/5648026.html</a></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">在校</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">BIOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">硬件</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">List</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/15/java容器-List/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/07/16/Java-map深拷贝/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Java map深拷贝(转)
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/07/14/Jsoup学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Jsoup学习笔记（一）——如何使用Jsoup解析html页面</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  
+
+  
 
 
           </div>
@@ -237,9 +522,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

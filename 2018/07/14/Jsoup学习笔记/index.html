@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 操作系统 | Ley&#39;s party</title>
+  <title>Jsoup学习笔记（一）——如何使用Jsoup解析html页面 | Ley&#39;s party</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="华南师范计算机">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ley&#39;s party">
-<meta property="og:url" content="http://yoursite.com/tags/操作系统/index.html">
+  <meta name="description" content="前言：内容基本都是复制了Jsoup官方的cookbook里的东西，以便后期自己复习查找。 使用DOM方法来遍历一个文档 问题你有一个HTML文档要从中提取数据，并了解这个HTML文档的结构。 方法将HTML解析成一个Document之后，就可以使用类似于DOM的方法进行操作。示例代码： File input = new File(&amp;quot;/tmp/input.html&amp;quot;); Docu">
+<meta name="keywords" content="Jsoup">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jsoup学习笔记（一）——如何使用Jsoup解析html页面">
+<meta property="og:url" content="http://yoursite.com/2018/07/14/Jsoup学习笔记/index.html">
 <meta property="og:site_name" content="Ley&#39;s party">
+<meta property="og:description" content="前言：内容基本都是复制了Jsoup官方的cookbook里的东西，以便后期自己复习查找。 使用DOM方法来遍历一个文档 问题你有一个HTML文档要从中提取数据，并了解这个HTML文档的结构。 方法将HTML解析成一个Document之后，就可以使用类似于DOM的方法进行操作。示例代码： File input = new File(&amp;quot;/tmp/input.html&amp;quot;); Docu">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-11T15:28:13.101Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ley&#39;s party">
+<meta name="twitter:title" content="Jsoup学习笔记（一）——如何使用Jsoup解析html页面">
+<meta name="twitter:description" content="前言：内容基本都是复制了Jsoup官方的cookbook里的东西，以便后期自己复习查找。 使用DOM方法来遍历一个文档 问题你有一个HTML文档要从中提取数据，并了解这个HTML文档的结构。 方法将HTML解析成一个Document之后，就可以使用类似于DOM的方法进行操作。示例代码： File input = new File(&amp;quot;/tmp/input.html&amp;quot;); Docu">
   
     <link rel="alternative" href="/atom.xml" title="Ley&#39;s party" type="application/atom+xml">
   
@@ -145,76 +149,215 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Jsoup学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/03/操作系统开机过程/" class="archive-article-date">
-  	<time datetime="2018-05-03T14:45:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/03/操作系统开机过程/">操作系统开机过程</a>
+    <h1 class="article-title" itemprop="name">
+      Jsoup学习笔记（一）——如何使用Jsoup解析html页面
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/07/14/Jsoup学习笔记/" class="archive-article-date">
+  	<time datetime="2018-07-14T15:17:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言：<br>内容基本都是复制了Jsoup官方的cookbook里的东西，以便后期自己复习查找。</p>
+<h3 id="使用DOM方法来遍历一个文档"><a href="#使用DOM方法来遍历一个文档" class="headerlink" title="使用DOM方法来遍历一个文档"></a>使用DOM方法来遍历一个文档</h3><hr>
+<p><strong>问题</strong><br>你有一个HTML文档要从中提取数据，并了解这个HTML文档的结构。</p>
+<p><strong>方法</strong><br>将HTML解析成一个Document之后，就可以使用类似于DOM的方法进行操作。<br>示例代码：</p>
+<pre><code>File input = new File(&quot;/tmp/input.html&quot;);
+Document doc = Jsoup.parse(input, &quot;UTF-8&quot;, &quot;http://example.com/&quot;);
+
+Element content = doc.getElementById(&quot;content&quot;);
+Elements links = content.getElementsByTag(&quot;a&quot;);
+for (Element link : links) {
+String linkHref = link.attr(&quot;href&quot;);
+String linkText = link.text();
+}
+</code></pre><p><strong>说明</strong><br>Elements这个对象提供了一系列类似于DOM的方法来查找元素，抽取并处理其中的数据。具体如下：</p>
+<p>查找元素<br>•    getElementById(String id)<br>•    getElementsByTag(String tag)<br>•    getElementsByClass(String className)<br>•    getElementsByAttribute(String key) (and related methods)<br>•    Element siblings: siblingElements(), firstElementSibling(), lastElementSibling();nextElementSibling(), previousElementSibling()<br>•    Graph: parent(), children(), child(int index)</p>
+<p>元素数据<br>•    attr(String key)获取属性attr(String key, String value)设置属性<br>•    attributes()获取所有属性<br>•    id(), className() and classNames()<br>•    text()获取文本内容text(String value) 设置文本内容<br>•    html()获取元素内HTMLhtml(String value)设置元素内的HTML内容<br>•    outerHtml()获取元素外HTML内容<br>•    data()获取数据内容（例如：script和style标签)<br>•    tag() and tagName()<br>操作HTML和文本<br>•    append(String html), prepend(String html)<br>•    appendText(String text), prependText(String text)<br>•    appendElement(String tagName), prependElement(String tagName)<br>•    html(String value)</p>
+<p>通过查看页面源代码可以确定需要的元素（也就是模块）的名字，再通过getEleByModulxxx()的方法获取元素</p>
+<p>一、区别：<br>1）innerHTML:<br>　　从对象的起始位置到终止位置的全部内容,不包括Html标签。<br>2）outerHTML:<br>　　除了包含innerHTML的全部内容外, 还包含对象标签本身。</p>
+<p>二、例子1：</p>
+<div id="test"><br>   <span style="color:red">test1</span> test2<br></div>
+
+<p>1）innerHTML的值是“<span style="color:red">test1</span> test2 ”</p>
+<p>2）outerHTML的值是<div id="test"><span style="color:red">test1</span> test2</div></p>
+<p>三. 例子2:</p>
+<body><br><div>aa</div><br></body>
+
+<p>通过document.body.innerHTML获取到的内容是:<div>aa</div><br>通过document.body.outerHTML获取到的内容是:<body><div>aa</div></body></p>
+<p>使用选择器语法来查找元素<br>问题<br>你想使用类似于CSS或jQuery的语法来查找和操作元素。<br>方法<br>可以使用Element.select(String selector) 和 Elements.select(String selector) 方法实现：<br>File input = new File(“/tmp/input.html”);<br>Document doc = Jsoup.parse(input, “UTF-8”, “<a href="http://example.com/&quot;)" target="_blank" rel="noopener">http://example.com/&quot;)</a>;</p>
+<p>Elements links = doc.select(“a[href]”); //带有href属性的a元素<br>Elements pngs = doc.select(“img[src$=.png]”);<br>  //扩展名为.png的图片</p>
+<p>Element masthead = doc.select(“div.masthead”).first();<br>  //class等于masthead的div标签</p>
+<p>Elements resultLinks = doc.select(“h3.r &gt; a”); //在h3元素之后的a元素<br>说明<br>jsoup elements对象支持类似于CSS (或jquery)的选择器语法，来实现非常强大和灵活的查找功能。.<br>这个select 方法在Document, Element,或Elements对象中都可以使用。且是上下文相关的，因此可实现指定元素的过滤，或者链式选择访问。<br>Select方法将返回一个Elements集合，并提供一组方法来抽取和处理结果。<br>Selector选择器概述<br>•    tagname: 通过标签查找元素，比如：a<br>•    ns|tag: 通过标签在命名空间查找元素，比如：可以用 fb|name 语法来查找 <a href="fb:name" target="_blank" rel="noopener">fb:name</a> 元素<br>•    #id: 通过ID查找元素，比如：#logo<br>•    .class: 通过class名称查找元素，比如：.masthead<br>•    [attribute]: 利用属性查找元素，比如：[href]<br>•    [^attr]: 利用属性名前缀来查找元素，比如：可以用[^data-] 来查找带有HTML5 Dataset属性的元素<br>•    [attr=value]: 利用属性值来查找元素，比如：[width=500]<br>•    [attr^=value], [attr$=value], [attr<em>=value]: 利用匹配属性值开头、结尾或包含属性值来查找元素，比如：[href</em>=/path/]<br>•    [attr~=regex]: 利用属性值匹配正则表达式来查找元素，比如： img[src~=(?i).(png|jpe?g)]<br>•    <em>: 这个符号将匹配所有元素<br>Selector选择器组合使用<br>•    el#id: 元素+ID，比如： div#logo<br>•    el.class: 元素+class，比如： div.masthead<br>•    el[attr]: 元素+class，比如： a[href]<br>•    任意组合，比如：a[href].highlight<br>•    ancestor child: 查找某个元素下子元素，比如：可以用.body p 查找在”body”元素下的所有 p元素<br>•    parent &gt; child: 查找某个父元素下的直接子元素，比如：可以用div.content &gt; p 查找 p 元素，也可以用body &gt; </em> 查找body标签下所有直接子元素<br>•    siblingA + siblingB: 查找在A元素之前第一个同级元素B，比如：div.head + div<br>•    siblingA ~ siblingX: 查找A元素之前的同级X元素，比如：h1 ~ p<br>•    el, el, el:多个选择器组合，查找匹配任一选择器的唯一元素，例如：div.masthead, div.logo<br>伪选择器selectors<br>•    :lt(n): 查找哪些元素的同级索引值（它的位置在DOM树中是相对于它的父节点）小于n，比如：td:lt(3) 表示小于三列的元素<br>•    :gt(n):查找哪些元素的同级索引值大于n，比如： div p:gt(2)表示哪些div中有包含2个以上的p元素<br>•    :eq(n): 查找哪些元素的同级索引值与n相等，比如：form input:eq(1)表示包含一个input标签的Form元素<br>•    :has(seletor): 查找匹配选择器包含元素的元素，比如：div:has(p)表示哪些div包含了p元素<br>•    :not(selector): 查找与选择器不匹配的元素，比如： div:not(.logo) 表示不包含 class=logo 元素的所有 div 列表<br>•    :contains(text): 查找包含给定文本的元素，搜索不区分大不写，比如： p:contains(jsoup)<br>•    :containsOwn(text): 查找直接包含给定文本的元素<br>•    :matches(regex): 查找哪些元素的文本匹配指定的正则表达式，比如：div:matches((?i)login)<br>•    :matchesOwn(regex): 查找自身包含文本匹配指定正则表达式的元素<br>•    注意：上述伪选择器索引是从0开始的，也就是说第一个元素索引值为0，第二个元素index为1等</p>
+<p>可以查看Selector API参考来了解更详细的内容</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">在校</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">BIOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">硬件</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Jsoup</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/14/Jsoup学习笔记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/07/15/java容器-List/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          java容器-List
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/07/14/ipc/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">进程间通信(Inter-Process Communication)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用DOM方法来遍历一个文档"><span class="toc-number">1.</span> <span class="toc-text">使用DOM方法来遍历一个文档</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  
+
+  
 
 
           </div>
@@ -237,9 +380,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 操作系统 | Ley&#39;s party</title>
+  <title>httpclient出现Invalid cookies header异常 | Ley&#39;s party</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="华南师范计算机">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ley&#39;s party">
-<meta property="og:url" content="http://yoursite.com/tags/操作系统/index.html">
+  <meta name="description" content="org.apache.http.client.protocol.ResponseProcessCookies processCookies  警告: Invalid cookie header: “Set-Cookie: q_c1=484d1c0f82e1461790775962c93f1875|1516253307000|1516253307000; path=/; expires=Sun, 1">
+<meta name="keywords" content="httpclient,cookies">
+<meta property="og:type" content="article">
+<meta property="og:title" content="httpclient出现Invalid cookies header异常">
+<meta property="og:url" content="http://yoursite.com/2018/07/16/httpclient-cookies报错/index.html">
 <meta property="og:site_name" content="Ley&#39;s party">
+<meta property="og:description" content="org.apache.http.client.protocol.ResponseProcessCookies processCookies  警告: Invalid cookie header: “Set-Cookie: q_c1=484d1c0f82e1461790775962c93f1875|1516253307000|1516253307000; path=/; expires=Sun, 1">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-11T15:48:48.267Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ley&#39;s party">
+<meta name="twitter:title" content="httpclient出现Invalid cookies header异常">
+<meta name="twitter:description" content="org.apache.http.client.protocol.ResponseProcessCookies processCookies  警告: Invalid cookie header: “Set-Cookie: q_c1=484d1c0f82e1461790775962c93f1875|1516253307000|1516253307000; path=/; expires=Sun, 1">
   
     <link rel="alternative" href="/atom.xml" title="Ley&#39;s party" type="application/atom+xml">
   
@@ -145,76 +149,196 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-httpclient-cookies报错" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/03/操作系统开机过程/" class="archive-article-date">
-  	<time datetime="2018-05-03T14:45:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/03/操作系统开机过程/">操作系统开机过程</a>
+    <h1 class="article-title" itemprop="name">
+      httpclient出现Invalid cookies header异常
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/07/16/httpclient-cookies报错/" class="archive-article-date">
+  	<time datetime="2018-07-16T15:46:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>org.apache.http.client.protocol.ResponseProcessCookies processCookies</p>
+<blockquote>
+<p>警告: Invalid cookie header: “Set-Cookie: q_c1=484d1c0f82e1461790775962c93f1875|1516253307000|1516253307000; path=/; expires=Sun, 17 Jan 2021 05:28:27 GMT; domain=zhihu.com; httponly”. Invalid ‘expires’ attribute: Sun, 17 Jan 2021 05:28:27 GMT</p>
+</blockquote>
+<p>这时候需要修改请求中的cookie策略(CookieSpecs)</p>
+<ol>
+<li>RequestConfig defaultConfig = RequestConfig.custom().setCookieSpec(CookieSpecs.STANDARD).build();</li>
+<li>getMethod.setConfig(defaultConfig);<br>这样即可以解决</li>
+</ol>
+<p>附带几种CookieSpecs的详解<br>HttpClient附带了几个CookieSpec的实现<br>Standard strict：State management policy compliant with the syntax and semantics of the wellbehaved profile defined by RFC 6265, section 4.</p>
+<p>Standard：State management policy compliant with a more relaxed profile defined by RFC<br>6265, section 4 intended for interoperability with existing servers that do not conform to the well</p>
+<p>behaved profile.</p>
+<p>Netscape draft (obsolete)：This policy conforms to the original draft specification published<br>by Netscape Communications. It should be avoided unless absolutely necessary for compatibility</p>
+<p>with legacy code.</p>
+<p>RFC 2965 (obsolete)：State management policy compliant with the obsolete state management</p>
+<p>specification defined by RFC 2965. Please do not use in new applications.—&gt;已废弃</p>
+<p>RFC 2109 (obsolete)：State management policy compliant with the obsolete state management</p>
+<p>specification defined by RFC 2109. Please do not use in new applications—&gt;已废弃</p>
+<p>Browser compatibility (obsolete)：This policy strives to closely mimic the (mis)behavior of<br>older versions of browser applications such as Microsoft Internet Explorer and Mozilla FireFox.</p>
+<p>Please do not use in new applications.—&gt;已废弃</p>
+<p>Default：Default cookie policy is a synthetic policy that picks up either RFC 2965, RFC 2109<br>or Netscape draft compliant implementation based on properties of cookies sent with the HTTP<br>response (such as version attribute, now obsolete). This policy will be deprecated in favor of the<br>standard (RFC 6265 compliant) implementation in the next minor release of HttpClient.</p>
+<p>Ignore cookies：所有的cookie将会被忽略</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">在校</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">httpclient</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">BIOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">硬件</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">cookies</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/16/httpclient-cookies报错/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/07/30/爬虫重定向/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          爬虫重定向
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/07/16/Java-map深拷贝/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java map深拷贝(转)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  
+
+  
 
 
           </div>
@@ -237,9 +361,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
