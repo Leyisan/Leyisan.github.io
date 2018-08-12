@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Ley&#39;s party">
 <meta property="og:description" content="org.apache.http.client.protocol.ResponseProcessCookies processCookies  警告: Invalid cookie header: “Set-Cookie: q_c1=484d1c0f82e1461790775962c93f1875|1516253307000|1516253307000; path=/; expires=Sun, 1">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-11T15:48:48.267Z">
+<meta property="og:updated_time" content="2018-08-12T03:43:21.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="httpclient出现Invalid cookies header异常">
 <meta name="twitter:description" content="org.apache.http.client.protocol.ResponseProcessCookies processCookies  警告: Invalid cookie header: “Set-Cookie: q_c1=484d1c0f82e1461790775962c93f1875|1516253307000|1516253307000; path=/; expires=Sun, 1">
@@ -178,8 +178,7 @@
 <li>RequestConfig defaultConfig = RequestConfig.custom().setCookieSpec(CookieSpecs.STANDARD).build();</li>
 <li>getMethod.setConfig(defaultConfig);<br>这样即可以解决</li>
 </ol>
-<p>附带几种CookieSpecs的详解<br>HttpClient附带了几个CookieSpec的实现<br>Standard strict：State management policy compliant with the syntax and semantics of the wellbehaved profile defined by RFC 6265, section 4.</p>
-<p>Standard：State management policy compliant with a more relaxed profile defined by RFC<br>6265, section 4 intended for interoperability with existing servers that do not conform to the well</p>
+<p>附带几种CookieSpecs的详解<br>HttpClient附带了几个CookieSpec的实现<br>Standard strict：State management policy compliant with the syntax and semantics of the wellbehaved profile defined by RFC 6265, section 4.<br><a id="more"></a><br>Standard：State management policy compliant with a more relaxed profile defined by RFC<br>6265, section 4 intended for interoperability with existing servers that do not conform to the well</p>
 <p>behaved profile.</p>
 <p>Netscape draft (obsolete)：This policy conforms to the original draft specification published<br>by Netscape Communications. It should be avoided unless absolutely necessary for compatibility</p>
 <p>with legacy code.</p>

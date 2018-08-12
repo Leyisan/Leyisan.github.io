@@ -17,7 +17,7 @@
 <meta property="og:description" content="public class CopyMap {  /** * @author 张仲华 * @param args * 2014 -8 -6 上午9:29:33 */ public static void main(String[] args) {      Map&amp;lt;String,Integer&amp;gt; map = new HashMap&amp;lt;String,Integer&amp;gt;();">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://wx3.sinaimg.cn/large/7032dfcbgy1fu66w7awcmj209g05rjrp.jpg">
-<meta property="og:updated_time" content="2018-08-11T15:43:57.326Z">
+<meta property="og:updated_time" content="2018-08-12T03:44:01.955Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java map深拷贝(转)">
 <meta name="twitter:description" content="public class CopyMap {  /** * @author 张仲华 * @param args * 2014 -8 -6 上午9:29:33 */ public static void main(String[] args) {      Map&amp;lt;String,Integer&amp;gt; map = new HashMap&amp;lt;String,Integer&amp;gt;();">
@@ -197,6 +197,7 @@ public static void main(String[] args) {
 <p><a href="http://blog.csdn.net/lzkkevin/article/details/6667958" target="_blank" rel="noopener">http://blog.csdn.net/lzkkevin/article/details/6667958</a></p>
 </blockquote>
 <p>注意！！！注意！！！！注意！！！ 上面并不是深拷贝，留下来的原因是提醒大家，这里是存在错误的。（很高兴你看到这里了）<br>感谢下面这几位朋友的提醒。</p>
+<a id="more"></a>
 <p> 文章更正如下：<br>如何实现Map的深拷贝呢？<br>有一种方法，是使用序列化的方式来实现对象的深拷贝，但是前提是，对象必须是实现了Serializable接口才可以，Map本身没有实现 Serializable 这个接口，所以这种方式不能序列化Map，也就是不能深拷贝Map。但是HashMap是可以的，因为它实现了 Serializable。下面的方式，基于HashMap来讲，非Map的拷贝。<br>具体实现如下：</p>
 <pre><code>01    public class CloneUtils {
 02     
